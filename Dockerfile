@@ -65,5 +65,9 @@ RUN make
 WORKDIR /home/zaphd/zaphd-epics
 COPY . .
 RUN make
+WORKDIR /home/zaphd/zaphd-epics/iocBoot/ioczaphd
+
+
+## Possible entrypoint
 
 #ENTRYPOINT ["/home/zaphd/zaphd-epics/iocBoot/ioczaphd/st.cmd"]
