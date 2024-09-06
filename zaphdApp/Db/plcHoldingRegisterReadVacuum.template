@@ -1,0 +1,209 @@
+record(longin, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):LongIn") {
+  field(SCAN, "I/O Intr")
+  field(DTYP, "asynUInt32Digital")
+  field(INP, "@asynMask($(PORT), $(OFFSET), 0xFFFF, $(TIMEOUT))MODBUS_DATA")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect")
+}
+
+record(mbbiDirect, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect") {
+  field(SCAN, "Passive")
+  field(INP, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):LongIn")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:0")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:0") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B0")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:1")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:1") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B1")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:2")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:2") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B2")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:3")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:3") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B3")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:4")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:4") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B4")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:5")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:5") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B5")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:6")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:6") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B6")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:7")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:7") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B7")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:8")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:8") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B8")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:9")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:9") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.B9")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:10")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:10") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.BA")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:11")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:11") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.BB")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:12")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:12") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.BC")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:13")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:13") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.BD")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:14")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:14") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.BE")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:15")
+}
+
+record(bo, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:15") {
+  field(SCAN, "Passive")
+  field(DOL, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):MbbiDirect.BF")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "0")
+  field(ONAM, "1")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadOnes")
+}
+
+record(calc, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadOnes") {
+  field(SCAN, "Passive")
+  field(CALC, "A+B*2+C*4+D*8")
+  field(INPA, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:0.VAL")
+  field(INPB, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:1.VAL")
+  field(INPC, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:2.VAL")
+  field(INPD, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:3.VAL")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadTens")
+}
+
+record(calc, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadTens") {
+  field(SCAN, "Passive")
+  field(CALC, "A+10*(B+C*2+D*4+E*8)")
+  field(INPA, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadOnes.VAL")
+  field(INPB, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:4.VAL")
+  field(INPC, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:5.VAL")
+  field(INPD, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:6.VAL")
+  field(INPE, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:7.VAL")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadHundreds")
+}
+
+record(calc, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadHundreds") {
+  field(SCAN, "Passive")
+  field(CALC, "A+100*(B+C*2+D*4+E*8)")
+  field(INPA, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadTens.VAL")
+  field(INPB, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:8.VAL")
+  field(INPC, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:9.VAL")
+  field(INPD, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:10.VAL")
+  field(INPE, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:11.VAL")
+  field(FLNK, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadThousands")
+}
+
+record(calc, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadThousands") {
+  field(SCAN, "Passive")
+  field(CALC, "A+1000*(B+C*2+D*4+E*8)")
+  field(INPA, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadHundreds.VAL")
+  field(INPB, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:12.VAL")
+  field(INPC, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:13.VAL")
+  field(INPD, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:14.VAL")
+  field(INPE, "$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):BO:15.VAL")
+  field(FLNK, "$(PVREADNAME)")
+}
+
+record(calc,"$(PVREADNAME)") {
+ field(DESC,"$(DESCRIPTION)")
+ field(SCAN,"Passive")
+ field(CALC,"$(CALCFIELD)")
+ field(INPA,"$(SUBSYS):$(GROUP):$(DEVICE):$(PORT):$(OFFSET):ReadThousands")
+ field(EGU,"$(UNITS)")
+ field(PREC,"$(PREC)")
+ field(FLNK, "$(FLNK)")
+}

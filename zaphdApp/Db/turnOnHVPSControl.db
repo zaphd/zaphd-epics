@@ -1,0 +1,34 @@
+# Initialize on button sequence 0 - 1 - 0
+record(bo, "ZaPHD:ControlPLC:HVPSOnSequence")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+  field(ONAM, "1")
+  field(ZNAM, "0")
+  field(FLNK, "ZaPHD:ControlPLC:HVPSOnSequenceCalcMon")
+}
+
+# Monitors bo and waits for a one to turn cycle the HV PS On Button
+record(calcout, "ZaPHD:ControlPLC:HVPSOnSequenceCalcMon") 
+{
+  field(SCAN, "Passive")
+  field(OOPT, "Transition To Non-zero")
+  field(CALC, "(A==1)")
+  field(INPA, "ZaPHD:ControlPLC:HVPSOnSequence.VAL")
+  field(OUT, "ZaPDH:ControlPLC:OnButtonHigh PP")
+}
+
+# Pulsing the button to a high
+record(calcout, "ZaPDH:ControlPLC:OnButtonHigh") 
+{
+  field(FLNK, "ZaPDH:ControlPLC:OnButtonLow")
+  field(OUT, "ZaPHD:ControlPLC:HVPSOnWrite.VAL")
+  field(CALC, "1")
+}
+
+# Returning the button to a zero after 1 second
+record(calcout, "ZaPDH:ControlPLC:OnButtonLow") 
+{
+  field(OUT, "ZaPHD:ControlPLC:HVPSOnWrite.VAL")
+  field(ODLY, "1")
+}

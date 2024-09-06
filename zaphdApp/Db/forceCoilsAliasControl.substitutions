@@ -1,0 +1,46 @@
+# MasterControlOut.substitutions
+# writing 32 Coils in one-shot. These are control relays, C200-C237.
+#Using modbus function code 15.
+#In modbus coils, these are 3200-3231
+
+#Waveform array for writing out the Coils
+file "zaphdApp/Db/intArrayOutControl.template" { pattern
+{P,           R,            PORT,                  NELM}
+{DL:ZaPHDControl:ControlPLC:,         CnOutWArray,  Out_Word,    32}
+}
+#Binary Out Coils
+file "zaphdApp/Db/DLBOAliasControl.template" { pattern
+{P,             ZNAM,           ONAM, DESC, ALIAS}
+{"ZaPHD:ControlPLC:EPICSHeartbeatWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3200:Write"}
+{"ZaPHD:ControlPLC:OpenBankGroundWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3201:Write"}
+{"ZaPHD:ControlPLC:CloseAccelerationBankWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3202:Write"}
+{"ZaPHD:ControlPLC:CloseCompressionBankWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3203:Write"}
+{"ZaPHD:ControlPLC:HVPSOnWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3204:Write"}
+{"ZaPHD:ControlPLC:HVPSOffWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3205:Write"}
+{"ZaPHD:ControlPLC:TriggerExperimentWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3206:Write"}
+{"ZaPHD:ControlPLC:2083PhaseEngageWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3207:Write"}
+{"ZaPHD:ControlPLC:ExposeDHICameraWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3208:Write"}
+{"ZaPHD:ControlPLC:AccelerationBankEnabledWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3209:Write"}
+{"ZaPHD:ControlPLC:CompressionBankEnabledWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3210:Write"}
+{"ZaPHDBlank:ControlPLC:C213",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3211:Write"}
+{"ZaPHDBlank:ControlPLC:C214",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3212:Write"}
+{"ZaPHDBlank:ControlPLC:C215",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3213:Write"}
+{"ZaPHDBlank:ControlPLC:C216",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3214:Write"}
+{"ZaPHDBlank:ControlPLC:C217",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3215:Write"}
+{"ZaPHDBlank:ControlPLC:C220",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3216:Write"}
+{"ZaPHDBlank:ControlPLC:C221",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3217:Write"}
+{"ZaPHDBlank:ControlPLC:C222",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3218:Write"}
+{"ZaPHDBlank:ControlPLC:C223",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3219:Write"}
+{"ZaPHDBlank:ControlPLC:C224",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3220:Write"}
+{"ZaPHDBlank:ControlPLC:C225",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3221:Write"}
+{"ZaPHDBlank:ControlPLC:C226",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3222:Write"}
+{"ZaPHDBlank:ControlPLC:C227",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3223:Write"}
+{"ZaPHDBlank:ControlPLC:C230",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3224:Write"}
+{"ZaPHDBlank:ControlPLC:C231",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3225:Write"}
+{"ZaPHDBlank:ControlPLC:C232",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3226:Write"}
+{"ZaPHDBlank:ControlPLC:C233",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3227:Write"}
+{"ZaPHDBlank:ControlPLC:C234",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3228:Write"}
+{"ZaPHDBlank:ControlPLC:C235",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3229:Write"}
+{"ZaPHDBlank:ControlPLC:C236",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3230:Write"}
+{"ZaPHDBlank:ControlPLC:C237",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3231:Write"}
+}

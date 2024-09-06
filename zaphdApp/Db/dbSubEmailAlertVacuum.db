@@ -1,0 +1,22 @@
+# If you a write a value to this record, and it 
+# it will pass it to a subroutine that will trigger
+# a python script to send out an email.
+# 1 = Sends out an email that HVV Closed
+# 2 = Sends out an email that the power turned off
+record(longout, "$(SubSys):EmailAlert:SubRoutine:SetEventStart")
+{
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(VAL, "0")
+  field(FLNK, "$(SubSys):EmailAlert:SubRoutine:SetEvent")
+}
+
+
+# This is a subroutine. Depending on the value of inpa,
+# it might trigger a python script to send out an
+# email alert about the vacuum system.
+record(sub,"$(SubSys):EmailAlert:SubRoutine:SetEvent")
+{
+  field(SNAM,"zaphdVacuumEmailAlert")
+  field(INPA, "$(SubSys):EmailAlert:SubRoutine:SetEventStart")
+}

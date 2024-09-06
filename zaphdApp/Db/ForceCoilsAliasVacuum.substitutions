@@ -1,0 +1,46 @@
+# MasterControlOut.substitutions
+# writing 32 Coils in one-shot. These are control relays, C200-C237.
+#Using modbus function code 15.
+#In modbus coils, these are 3200-3231
+
+#Waveform array for writing out the Coils
+file "zaphdApp/Db/intarray_outVacuum.template" { pattern
+{P,           R,            PORT,                  NELM}
+{DL:ZaPHDVac:,         CnOutWArray,  Out_Word,    32}
+}
+#Binary Out Coils
+file "zaphdApp/Db/DLBOAliasVacuum.template" { pattern
+{P,             ZNAM,           ONAM, DESC, ALIAS}
+{"ZaPHD:VacuumPLC:PowerOn:Switch",	"Low",	"High",	"C200",	"ZaPHD:VacuumPLC:ForceCoil3200:Write"}
+{"ZaPHD:VacuumPLC:PowerOff:Switch",	"Low",	"High",	"C201",	"ZaPHD:VacuumPLC:ForceCoil3201:Write"}
+{"Blank:ZaPHDVac:C202",	"Low",	"High",	"C202",	"ZaPHD:VacuumPLC:ForceCoil3202:Write"}
+{"Blank:ZaPHDVac:C203",	"Low",	"High",	"C203",	"ZaPHD:VacuumPLC:ForceCoil3203:Write"}
+{"ZaPHD:VacuumPLC:RoughOn:Switch",	"Low",	"High",	"C204",	"ZaPHD:VacuumPLC:ForceCoil3204:Write"}
+{"ZaPHD:VacuumPLC:RoughOff:Switch",	"Low",	"High",	"C205",	"ZaPHD:VacuumPLC:ForceCoil3205:Write"}
+{"ZaPHD:VacuumPLC:RootsOn:Switch",	"Low",	"High",	"C206",	"ZaPHD:VacuumPLC:ForceCoil3206:Write"}
+{"ZaPHD:VacuumPLC:RootsOff:Switch",	"Low",	"High",	"C207",	"ZaPHD:VacuumPLC:ForceCoil3207:Write"}
+{"ZaPHD:VacuumPLC:ChillerOn:Switch",	"Low",	"High",	"C210",	"ZaPHD:VacuumPLC:ForceCoil3208:Write"}
+{"ZaPHD:VacuumPLC:ChillerOff:Switch",	"Low",	"High",	"C211",	"ZaPHD:VacuumPLC:ForceCoil3209:Write"}
+{"Blank:ZaPHDVac:C212",	"Low",	"High",	"C212",	"ZaPHD:VacuumPLC:ForceCoil3210:Write"}
+{"Blank:ZaPHDVac:C213",	"Low",	"High",	"C213",	"ZaPHD:VacuumPLC:ForceCoil3211:Write"}
+{"ZaPHD:VacuumPLC:ForelineOn:Switch",	"Low",	"High",	"C214",	"ZaPHD:VacuumPLC:ForceCoil3212:Write"}
+{"ZaPHD:VacuumPLC:ForelineOff:Switch",	"Low",	"High",	"C215",	"ZaPHD:VacuumPLC:ForceCoil3213:Write"}
+{"ZaPHD:VacuumPLC:WindowsRoughOn:Switch",	"Low",	"High",	"C216",	"ZaPHD:VacuumPLC:ForceCoil3214:Write"}
+{"ZaPHD:VacuumPLC:WindowsRoughOff:Switch",	"Low",	"High",	"C217",	"ZaPHD:VacuumPLC:ForceCoil3215:Write"}
+{"ZaPHD:VacuumPLC:TurboOn::Switch",	"Low",	"High",	"C220",	"ZaPHD:VacuumPLC:ForceCoil3216:Write"}
+{"ZaPHD:VacuumPLC:TurboOff::Switch",	"Low",	"High",	"C221",	"ZaPHD:VacuumPLC:ForceCoil3217:Write"}
+{"ZaPHD:VacuumPLC:ColdRoughOn:Switch",	"Low",	"High",	"C222",	"ZaPHD:VacuumPLC:ForceCoil3218:Write"}
+{"ZaPHD:VacuumPLC:ColdRoughOff:Switch",	"Low",	"High",	"C223",	"ZaPHD:VacuumPLC:ForceCoil3219:Write"}
+{"ZaPHD:VacuumPLC:HVVOn:Switch",	"Low",	"High",	"C224",	"ZaPHD:VacuumPLC:ForceCoil3220:Write"}
+{"ZaPHD:VacuumPLC:HVVOff:Switch",	"Low",	"High",	"C225",	"ZaPHD:VacuumPLC:ForceCoil3221:Write"}
+{"ZaPHD:VacuumPLC:BypassOn:Switch",	"Low",	"High",	"C226",	"ZaPHD:VacuumPLC:ForceCoil3222:Write"}
+{"ZaPHD:VacuumPLC:BypassOff:Switch",	"Low",	"High",	"C227",	"ZaPHD:VacuumPLC:ForceCoil3223:Write"}
+{"ZaPHD:VacuumPLC:ChamberRoughOn:Switch",	"Low",	"High",	"C230",	"ZaPHD:VacuumPLC:ForceCoil3224:Write"}
+{"ZaPHD:VacuumPLC:ChamberRoughOff:Switch",	"Low",	"High",	"C231",	"ZaPHD:VacuumPLC:ForceCoil3225:Write"}
+{"Blank:ZaPHDVac:C232",	"Low",	"High",	"C232",	"ZaPHD:VacuumPLC:ForceCoil3226:Write"}
+{"Blank:ZaPHDVac:C233",	"Low",	"High",	"C233",	"ZaPHD:VacuumPLC:ForceCoil3227:Write"}
+{"Blank:ZaPHDVac:C234",	"Low",	"High",	"C234",	"ZaPHD:VacuumPLC:ForceCoil3228:Write"}
+{"Blank:ZaPHDVac:C235",	"Low",	"High",	"C235",	"ZaPHD:VacuumPLC:ForceCoil3229:Write"}
+{"Blank:ZaPHDVac:C236",	"Low",	"High",	"C236",	"ZaPHD:VacuumPLC:ForceCoil3230:Write"}
+{"Blank:ZaPHDVac:C237",	"Low",	"High",	"C237",	"ZaPHD:VacuumPLC:ForceCoil3231:Write"}
+}

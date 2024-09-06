@@ -1,0 +1,194 @@
+record(calc,"$(SubSys):Roughline:Pressure") {
+ field(DESC,"Roughline Pressure in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V3310")
+ field(INPB,"ZaPHD:VacuumPLC:V3311")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+record(calc,"$(SubSys):Foreline:Pressure") {
+ field(DESC,"Foreline Pressure in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V3312")
+ field(INPB,"ZaPHD:VacuumPLC:V3313")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+record(calc,"$(SubSys):Windowsline:Pressure") {
+ field(DESC,"Windowsline Pressure in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V3314")
+ field(INPB,"ZaPHD:VacuumPLC:V3315")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+record(calc,"$(SubSys):Bypass:Pressure") {
+ field(DESC,"Bypass Pressure in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V3316")
+ field(INPB,"ZaPHD:VacuumPLC:V3317")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+record(calc,"$(SubSys):Chamber:Pressure") {
+ field(DESC,"Chamber Pressure in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V3320")
+ field(INPB,"ZaPHD:VacuumPLC:V3321")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+#The two 16-bit BCD values have an implied decimal point over the 3rd digit, so this is how you
+#convert them to a real number. Change (B*10)+A*1E-3 to A*1E-3 b/c I think one of the
+# PLC coils (V2041) is not getting zeroed. It needs to be power cycled or something.
+record(calc,"$(SubSys):IonGauge:RawReading") {
+ field(DESC,"Raw value from Ion Gauge")
+ field(SCAN,"Passive")
+ #field(CALC,"A+B")
+ field(CALC,"A")
+ field(INPA,"ZaPHD:VacuumPLC:V2040")
+ field(INPB,"ZaPHD:VacuumPLC:V2041")
+ field(EGU,"Raw")
+ field(PREC,"3")
+ field(FLNK,"$(SubSys):IonGauge:Calculation1")
+}
+
+
+#Setting up the exponent for the pressure calculation from the Ion Gauge Voltage
+record(calc,"$(SubSys):IonGauge:Calculation1") {
+ field(DESC,"Ion Gauge Voltage")
+ field(SCAN,"Passive")
+ field(CALC,"A*2-11")	
+ field(INPA,"$(SubSys):IonGauge:RawReading")
+ field(EGU,"Raw")
+ field(PREC,"3")
+ field(FLNK,"$(SubSys):IonGauge:Pressure")
+}
+
+#The final formula to calculate the pressure on the Ion Gauge in Torr
+record(calc,"$(SubSys):IonGauge:Pressure") {
+ field(DESC,"Ion Gauge Pressure")
+ field(SCAN,"Passive")
+ field(CALC,"10**A")
+ field(INPA,"$(SubSys):IonGauge:Calculation1")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+
+#Reading V1400. Pressure should be an 8 digit BCD with 3 decimal places
+# So, 20 Torr = 00020.000
+# V1401 = 0002, V1400 = 0000 
+# 0.400 Torr =00000.400
+# V1403 = 0000, V1402 = 0400 
+# Roughline Set Point 1 1400-1401
+record(calc,"$(SubSys):Roughline:SetPoint1") {
+ field(DESC,"Roughline SP1 in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V1400")
+ field(INPB,"ZaPHD:VacuumPLC:V1401")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+# Roughline Set Point 2 is V1402-V1403
+record(calc,"$(SubSys):Roughline:SetPoint2") {
+ field(DESC,"Roughline SP2 in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V1402")
+ field(INPB,"ZaPHD:VacuumPLC:V1403")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+# Foreline Set Point 1 is V1404
+record(calc,"$(SubSys):Foreline:SetPoint1") {
+ field(DESC,"Foreline SP1 in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V1404")
+ field(INPB,"ZaPHD:VacuumPLC:V1405")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+# Windows SP1 is V1406-V1407
+record(calc,"$(SubSys):Windowsline:SetPoint1") {
+ field(DESC,"Windowsline SP1 in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V1406")
+ field(INPB,"ZaPHD:VacuumPLC:V1407")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+# Chamber Set Point 1 is V1410
+record(calc,"$(SubSys):Chamber:SetPoint1") {
+ field(DESC,"Chamber SP1 in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V1410")
+ field(INPB,"ZaPHD:VacuumPLC:V1411")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+# Chamber set point 2 is V1412
+record(calc,"$(SubSys):Chamber:SetPoint2") {
+ field(DESC,"Chamber SP2 in Torr")
+ field(SCAN,"Passive")
+ field(CALC,"A+B")
+ field(INPA,"ZaPHD:VacuumPLC:V1412")
+ field(INPB,"ZaPHD:VacuumPLC:V1413")
+ field(EGU,"Torr")
+ field(PREC,"3")
+}
+
+# When high vacuum valve closes, we want to trigger
+# to write to the longout record,
+# $(SubSys):EmailAlert:SubRoutine:SetEventStart, 
+# which will trigger a subroutine to trigger a python
+# script to send out an email alert under the appropriate conditions
+record(calcout, "$(SubSys):HVV:Closed:CheckEmail:Calc") {
+  field(SCAN, "1 second")
+  field(CALC, "A")
+  field(OOPT, "Transition To Zero")
+  field(INPA, "$(SubSys):HVV:L1.VAL")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "!A")
+  field(OUT, "$(SubSys):EmailAlert:SubRoutine:SetEventStart PP")
+}
+
+# When the IOC boots up, this record will trigger a check to
+# see if the HVV valve is closed after a 10 second wait
+record(seq, "$(SubSys):IOCBootUp:EmailAlert:Status")
+{
+  field(SELM, "All")
+  field(PINI, "YES")
+  field(DOL1, "1")
+  field(LNK1, "$(SubSys):HVV:Closed:CheckEmailOneTime:Calc.PROC")
+  field(DLY1, "10.0") # Waits 10 seconds
+}
+
+# Just checks if HVV is open on startup one time.
+# Issues with looking for a transition, it won't always get it
+record(calcout, "$(SubSys):HVV:Closed:CheckEmailOneTime:Calc") {
+  field(CALC, "A")
+  field(OOPT, "When Zero")
+  field(INPA, "$(SubSys):HVV:L1.VAL")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "!A")
+  field(OUT, "$(SubSys):EmailAlert:SubRoutine:SetEventStart PP")
+}

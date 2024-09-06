@@ -1,0 +1,5 @@
+record(calc, "$(SubSys):iocHeartbeat") {
+  field(SCAN, ".5 second")
+  field(CALC, "A?0:1")
+  field(INPA, "$(SubSys):iocHeartbeat.VAL")
+}

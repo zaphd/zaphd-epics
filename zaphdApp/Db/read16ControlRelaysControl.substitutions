@@ -1,0 +1,38 @@
+# substitutions file for reading C100-C117 (3135-3150) Control relays with setpoints. Modbus 3135-3150
+
+# These are reading control relays. Start at 3135 for C100. 
+file "zaphdApp/Db/biBitAliasControl.template" { pattern
+{R,         PORT,             OFFSET,   ZNAM,   ONAM,  ZSV,       OSV,    SCAN,    DESC,  ALIAS}
+{"ZaPHD:ControlPLC:Ch1SignRead",	In_Coil2,	0,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3135:Read"}
+{"ZaPHDBlank:ControlPLC:C101",	In_Coil2,	1,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3136:Read"}
+{"ZaPHDBlank:ControlPLC:C102",	In_Coil2,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3137:Read"}
+{"ZaPHDBlank:ControlPLC:C103",	In_Coil2,	3,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3138:Read"}
+{"ZaPHDBlank:ControlPLC:C104",	In_Coil2,	4,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3139:Read"}
+{"ZaPHDBlank:ControlPLC:C105",	In_Coil2,	5,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3140:Read"}
+{"ZaPHDBlank:ControlPLC:C106",	In_Coil2,	6,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3141:Read"}
+{"ZaPHDBlank:ControlPLC:C107",	In_Coil2,	7,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3142:Read"}
+{"ZaPHD:ControlPLC:EPICSPLCHeartbeatOKRead",	In_Coil2,	8,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3143:Read"}
+{"ZaPHDBlank:ControlPLC:C111",	In_Coil2,	9,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3144:Read"}
+{"ZaPHDBlank:ControlPLC:C112",	In_Coil2,	10,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3145:Read"}
+{"ZaPHDBlank:ControlPLC:C113",	In_Coil2,	11,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3146:Read"}
+{"ZaPHDBlank:ControlPLC:C114",	In_Coil2,	12,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3147:Read"}
+{"ZaPHDBlank:ControlPLC:C115",	In_Coil2,	13,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3148:Read"}
+{"ZaPHDBlank:ControlPLC:C116",	In_Coil2,	14,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3149:Read"}
+{"ZaPHDBlank:ControlPLC:C117",	In_Coil2,	15,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3150:Read"}
+{"ZaPHD:ControlPLC:AccelerationBankSetPointOKRead",	In_Coil2,	16,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3151:Read"}
+{"ZaPHD:ControlPLC:CompressionBankSetPointOKRead",	In_Coil2,	17,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3152:Read"}
+{"ZaPHD:ControlPLC:AccelerationBankEnabledRead",	In_Coil2,	18,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3153:Read"}
+{"ZaPHD:ControlPLC:CompressionBankEnabledRead",	In_Coil2,	19,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3154:Read"}
+{"ZaPHDBlank:ControlPLC:C124",	In_Coil2,	20,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3155:Read"}
+{"ZaPHDBlank:ControlPLC:C125",	In_Coil2,	21,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3156:Read"}
+{"ZaPHDBlank:ControlPLC:C126",	In_Coil2,	22,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3157:Read"}
+{"ZaPHDBlank:ControlPLC:C127",	In_Coil2,	23,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3158:Read"}
+{"ZaPHDBlank:ControlPLC:C130",	In_Coil2,	24,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3159:Read"}
+{"ZaPHDBlank:ControlPLC:C131",	In_Coil2,	25,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3160:Read"}
+{"ZaPHDBlank:ControlPLC:C132",	In_Coil2,	26,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3161:Read"}
+{"ZaPHDBlank:ControlPLC:C133",	In_Coil2,	27,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3162:Read"}
+{"ZaPHDBlank:ControlPLC:C134",	In_Coil2,	28,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3163:Read"}
+{"ZaPHDBlank:ControlPLC:C135",	In_Coil2,	29,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3164:Read"}
+{"ZaPHDBlank:ControlPLC:C136",	In_Coil2,	30,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3165:Read"}
+{"ZaPHDBlank:ControlPLC:C137",	In_Coil2,	31,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3166:Read"}
+}

@@ -1,0 +1,67 @@
+# Initialize the experiment trigger sequence 0 - 1 - 0
+record(bo, "ZaPHD:ControlPLC:TriggerExperiment")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+  field(ONAM, "1")
+  field(ZNAM, "0")
+  field(FLNK, "ZaPHD:ControlPLC:TriggerExperimentCalcMon")
+}
+
+# Monitors bo and waits for a one to turn cycle trigger the experiment
+record(calcout, "ZaPHD:ControlPLC:TriggerExperimentCalcMon") {
+  field(SCAN, "Passive")
+  field(OOPT, "Transition To Non-zero")
+  field(CALC, "(A==1)")
+  field(INPA, "ZaPHD:ControlPLC:TriggerExperiment.VAL")
+  field(OUT, "ZaPHD:ControlPLC:TriggerExperimentHigh PP")
+}
+
+# Pulsing the trigger bit to high
+record(calcout, "ZaPHD:ControlPLC:TriggerExperimentHigh") 
+{
+  field(FLNK, "ZaPHD:ControlPLC:TriggerExperimentLow")
+  field(OUT, "ZaPHD:ControlPLC:TriggerExperimentWrite.VAL")
+  field(CALC, "1")
+}
+
+# Returning the button to a zero after 1 second
+record(calcout, "ZaPHD:ControlPLC:TriggerExperimentLow") 
+{
+  field(OUT, "ZaPHD:ControlPLC:TriggerExperimentWrite.VAL")
+  field(ODLY, "1")
+}
+
+# Initialize on DHI trigger 0 - 1 - 0
+record(bo, "ZaPHD:ControlPLC:ExposeDHICameraSequence")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+  field(ONAM, "1")
+  field(ZNAM, "0")
+  field(FLNK, "ZaPHD:ControlPLC:ExposeDHICameraCalcMon")
+}
+
+# Monitors bo and waits for a one to turn cycle dhi exposure
+record(calcout, "ZaPHD:ControlPLC:ExposeDHICameraCalcMon") {
+  field(SCAN, "Passive")
+  field(OOPT, "Transition To Non-zero")
+  field(CALC, "(A==1)")
+  field(INPA, "ZaPHD:ControlPLC:ExposeDHICameraSequence.VAL")
+  field(OUT, "ZaPHD:ControlPLC:ExposeDHICameraHigh PP")
+}
+
+# Pulsing the dhi exposure dhi to high
+record(calcout, "ZaPHD:ControlPLC:ExposeDHICameraHigh") 
+{
+  field(FLNK, "ZaPHD:ControlPLC:ExposeDHICameraLow")
+  field(OUT, "ZaPHD:ControlPLC:ExposeDHICameraWrite.VAL")
+  field(CALC, "1")
+}
+
+# Returning the button to a zero after 1 second
+record(calcout, "ZaPHD:ControlPLC:ExposeDHICameraLow") 
+{
+  field(OUT, "ZaPHD:ControlPLC:ExposeDHICameraWrite.VAL")
+  field(ODLY, "1")
+}

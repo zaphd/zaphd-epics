@@ -1,0 +1,398 @@
+
+#Processes to turn on power (tries to mimic momentary switch)
+record(bo, "$(SubSys):PowerOn:OnRequest") {
+  field(FLNK, "$(SubSys):PowerOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):PowerOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):PowerOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):PowerOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):PowerOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):PowerOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off power (tries to mimic momentary switch)
+record(bo, "$(SubSys):PowerOff:OffRequest") {
+  field(FLNK, "$(SubSys):PowerOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):PowerOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):PowerOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):PowerOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):PowerOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):PowerOff:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn on chiller (tries to mimic momentary switch)
+record(bo, "$(SubSys):ChillerOn:OnRequest") {
+  field(FLNK, "$(SubSys):ChillerOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):ChillerOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):ChillerOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):ChillerOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ChillerOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):ChillerOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off chiller (tries to mimic momentary switch)
+record(bo, "$(SubSys):ChillerOff:OffRequest") {
+  field(FLNK, "$(SubSys):ChillerOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):ChillerOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):ChillerOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):ChillerOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ChillerOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):ChillerOff:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn on rough (tries to mimic momentary switch)
+record(bo, "$(SubSys):RoughOn:OnRequest") {
+  field(FLNK, "$(SubSys):RoughOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):RoughOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):RoughOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):RoughOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):RoughOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):RoughOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off rough (tries to mimic momentary switch)
+record(bo, "$(SubSys):RoughOff:OffRequest") {
+  field(FLNK, "$(SubSys):RoughOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):RoughOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):RoughOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):RoughOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):RoughOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):RoughOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+#Processes to turn on RootsBlower (tries to mimic momentary switch)
+record(bo, "$(SubSys):RootsBlowerOn:OnRequest") {
+  field(FLNK, "$(SubSys):RootsBlowerOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):RootsBlowerOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):RootsBlowerOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):RootsOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):RootsBlowerOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):RootsOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off RootsBlower (tries to mimic momentary switch)
+record(bo, "$(SubSys):RootsBlowerOff:OffRequest") {
+  field(FLNK, "$(SubSys):RootsBlowerOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):RootsBlowerOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):RootsBlowerOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):RootsOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):RootsBlowerOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):RootsOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+#Processes to turn on Turbo (tries to mimic momentary switch)
+record(bo, "$(SubSys):TurboOn:OnRequest") {
+  field(FLNK, "$(SubSys):TurboOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):TurboOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):TurboOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):TurboOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):TurboOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):TurboOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off Turbo (tries to mimic momentary switch)
+record(bo, "$(SubSys):TurboOff:OffRequest") {
+  field(FLNK, "$(SubSys):TurboOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):TurboOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):TurboOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):TurboOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):TurboOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):TurboOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+
+#Processes to turn on Foreline (tries to mimic momentary switch)
+record(bo, "$(SubSys):ForelineOn:OnRequest") {
+  field(FLNK, "$(SubSys):ForelineOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):ForelineOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):ForelineOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):ForelineOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ForelineOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):ForelineOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off Foreline (tries to mimic momentary switch)
+record(bo, "$(SubSys):ForelineOff:OffRequest") {
+  field(FLNK, "$(SubSys):ForelineOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):ForelineOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):ForelineOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):ForelineOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ForelineOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):ForelineOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+
+#Processes to turn on Windows (tries to mimic momentary switch)
+record(bo, "$(SubSys):WindowsOn:OnRequest") {
+  field(FLNK, "$(SubSys):WindowsOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):WindowsOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):WindowsOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):WindowsOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):WindowsOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):WindowsOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off Windows (tries to mimic momentary switch)
+record(bo, "$(SubSys):WindowsOff:OffRequest") {
+  field(FLNK, "$(SubSys):WindowsOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):WindowsOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):WindowsOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):WindowsOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):WindowsOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):WindowsOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+
+#Processes to turn on ChamberRough (tries to mimic momentary switch)
+record(bo, "$(SubSys):ChamberRoughOn:OnRequest") {
+  field(FLNK, "$(SubSys):ChamberRoughOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):ChamberRoughOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):ChamberRoughOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):ChamberRoughOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ChamberRoughOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):ChamberRoughOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off ChamberRough (tries to mimic momentary switch)
+record(bo, "$(SubSys):ChamberRoughOff:OffRequest") {
+  field(FLNK, "$(SubSys):ChamberRoughOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):ChamberRoughOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):ChamberRoughOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):ChamberRoughOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ChamberRoughOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):ChamberRoughOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+
+#Processes to turn on HVV (tries to mimic momentary switch)
+record(bo, "$(SubSys):HVVOn:OnRequest") {
+  field(FLNK, "$(SubSys):HVVOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):HVVOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):HVVOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):HVVOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):HVVOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):HVVOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off HVV (tries to mimic momentary switch)
+record(bo, "$(SubSys):HVVOff:OffRequest") {
+  field(FLNK, "$(SubSys):HVVOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):HVVOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):HVVOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):HVVOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):HVVOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):HVVOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+#Processes to turn on Bypass (tries to mimic momentary switch)
+record(bo, "$(SubSys):BypassOn:OnRequest") {
+  field(FLNK, "$(SubSys):BypassOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):BypassOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):BypassOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):BypassOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):BypassOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):BypassOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off Bypass (tries to mimic momentary switch)
+record(bo, "$(SubSys):BypassOff:OffRequest") {
+  field(FLNK, "$(SubSys):BypassOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):BypassOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):BypassOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):BypassOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):BypassOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):BypassOff:Switch PP")
+  field(ODLY, "1")
+}
+
+
+
+#Processes to turn on ColdRough (tries to mimic momentary switch)
+record(bo, "$(SubSys):ColdRoughOn:OnRequest") {
+  field(FLNK, "$(SubSys):ColdRoughOn:OnRequest:Calc1")
+  field(VAL, "1")
+}
+
+record(calcout, "$(SubSys):ColdRoughOn:OnRequest:Calc1") {
+  field(FLNK, "$(SubSys):ColdRoughOn:OnRequest:Calc2")
+  field(OUT, "$(SubSys):ColdRoughOn:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ColdRoughOn:OnRequest:Calc2") {
+  field(OUT, "$(SubSys):ColdRoughOn:Switch PP")
+  field(ODLY, "1")
+}
+
+#Processes to turn off ColdRough (tries to mimic momentary switch)
+record(bo, "$(SubSys):ColdRoughOff:OffRequest") {
+  field(FLNK, "$(SubSys):ColdRoughOff:OffRequest:Calc1")
+  field(VAL, "1")
+  field(OMSL, "supervisory")
+}
+
+record(calcout, "$(SubSys):ColdRoughOff:OffRequest:Calc1") {
+  field(FLNK, "$(SubSys):ColdRoughOff:OffRequest:Calc2")
+  field(OUT, "$(SubSys):ColdRoughOff:Switch PP")
+  field(CALC, "1")
+}
+
+record(calcout, "$(SubSys):ColdRoughOff:OffRequest:Calc2") {
+  field(OUT, "$(SubSys):ColdRoughOff:Switch PP")
+  field(ODLY, "1")
+}

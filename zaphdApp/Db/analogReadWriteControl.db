@@ -1,0 +1,79 @@
+# Converting analog input read to bank voltage. 5 V => 10kV. 5 V max should be 10 kV
+record(calc,"$(SubSys):BankVoltage") {
+ field(DESC,"Bank Voltage")
+ field(SCAN,"Passive")
+ field(CALC,"A/4095*10*(1-2*B)")
+ field(INPA,"ZaPHD:ControlPLC:ReadBankVoltagePLC")
+ field(INPB, "ZaPHD:ControlPLC:Ch1SignRead")
+ field(EGU,"kV")
+ field(PREC,"2")
+}
+
+# This is the set point for the acceleration bank to be written to the PLC
+record(ao, "$(SubSys):AccelerationBankSetPoint")
+{
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(VAL, "0")
+  field(EGU, "kV")
+  field(DRVL, "0")
+  field(DRVH, "10")
+  field(PREC, "2")
+  field(FLNK, "$(SubSys):AccelerationBankSetPointConvert")
+}
+
+# This converts the setpoint in kV to 0 - 4095 in PLC. 4095 will be max. Reading will max
+# out at 5 V, with 5V = 10 kV, so 4095 corresponds to 10 kV.
+record(calc, "$(SubSys):AccelerationBankSetPointConvert")
+{
+  field(SCAN, "Passive")
+  field(CALC, "A/10*4095") # (0-4095 correspond to 0-10 kV)
+  field(INPA, "$(SubSys):AccelerationBankSetPoint.VAL")
+  field(VAL, "0")
+  field(FLNK, "$(SubSys):AccelerationBankSetPointWritePLC")
+}
+
+record(ao, "$(SubSys):AccelerationBankSetPointWritePLC") {
+  field(SCAN, "Passive")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asynMask(Write_Vmem1, 0, 16, 1000)MODBUS_DATA")
+  field(DOL, "$(SubSys):AccelerationBankSetPointConvert.VAL")
+  field(OIF, "Full")
+  field(OMSL, "closed_loop")
+  field(DRVH, "4095")
+  field(DRVL, "0")
+}
+
+# This is the set point for the compression bank to be written to the PLC
+record(ao, "$(SubSys):CompressionBankSetPoint")
+{
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(VAL, "0")
+  field(EGU, "kV")
+  field(DRVL, "0")
+  field(DRVH, "10")
+  field(PREC, "2")
+  field(FLNK, "$(SubSys):CompressionBankSetPointConvert")
+}
+
+# This converts the setpoint in kV to 0 - 4095 in PLC
+record(calc, "$(SubSys):CompressionBankSetPointConvert")
+{
+  field(SCAN, "Passive")
+  field(CALC, "A/10*4095") # (0-4095 is 0-5 Volts. 10 kV = Max = 5 Volts)
+  field(INPA, "$(SubSys):CompressionBankSetPoint.VAL")
+  field(VAL, "0")
+  field(FLNK, "$(SubSys):CompressionBankSetPointWritePLC")
+}
+
+record(ao, "$(SubSys):CompressionBankSetPointWritePLC") {
+  field(SCAN, "Passive")
+  field(DTYP, "asynInt32")
+  field(OUT, "@asynMask(Write_Vmem1, 1, 16, 1000)MODBUS_DATA")
+  field(DOL, "$(SubSys):CompressionBankSetPointConvert.VAL")
+  field(OIF, "Full")
+  field(OMSL, "closed_loop")
+  field(DRVH, "4095")
+  field(DRVL, "0")
+}

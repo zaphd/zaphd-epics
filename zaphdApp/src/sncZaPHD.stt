@@ -1,0 +1,549 @@
+program sncZaPHD // Name of program to be called with "seq [NAME]" command in epics shell
+
+/*
+* Internal variables
+*/
+char *tempString;
+
+/*
+* Declarations
+*/
+
+string stateValue;
+assign stateValue to "ZaPHD:ControlPLC:ControlStateName";
+
+char errorMessage[500];
+assign errorMessage to "ZaPHD:ControlPLC:ErrorMessage";
+
+int stateEnumeration;
+assign stateEnumeration to "ZaPHD:ControlPLC:ControlStateEnumeration";
+
+int safetyChain;
+assign safetyChain to "ZaPHD:ControlPLC:MainSafetyChainIntlkOKRead";
+monitor safetyChain;
+
+int heartBeatOK;
+assign heartBeatOK to "ZaPHD:ControlPLC:EPICSPLCHeartbeatOKRead";
+monitor heartBeatOK;
+
+int abortButton;
+assign abortButton to "ZaPHD:ControlPLC:ExperimentAbortButton";
+monitor abortButton;
+
+int startButton;
+assign startButton to "ZaPHD:ControlPLC:ExperimentStartButton";
+monitor startButton;
+
+int fireShot;
+assign fireShot to "ZaPHD:ControlPLC:TriggerExperimentWrite";
+
+int openGroundRelays;
+assign openGroundRelays to "ZaPHD:ControlPLC:OpenBankGroundWrite";
+
+int openGroundRelaysRead;
+assign openGroundRelaysRead to "ZaPHD:ControlPLC:OpenGroundRossRelaysRead";
+monitor openGroundRelaysRead;
+
+int closeAccelChargeRelays;
+assign closeAccelChargeRelays to "ZaPHD:ControlPLC:CloseAccelerationBankWrite";
+
+int closeAccelChargeRelaysRead;
+assign closeAccelChargeRelaysRead to "ZaPHD:ControlPLC:CloseAccelerationRossRelaysRead";
+monitor closeAccelChargeRelaysRead;
+
+int closeCompressChargeRelays;
+assign closeCompressChargeRelays to "ZaPHD:ControlPLC:CloseCompressionBankWrite";
+
+int closeCompressChargeRelaysRead;
+assign closeCompressChargeRelaysRead to "ZaPHD:ControlPLC:CloseCompressionRossRelaysRead";
+monitor closeCompressChargeRelaysRead;
+
+int hvPSOn;
+assign hvPSOn to "ZaPHD:ControlPLC:HVPSOnSequence";
+
+int hvPSOff;
+assign hvPSOff to "ZaPHD:ControlPLC:HVPSOffWrite";
+
+int engage2083Phase;
+assign engage2083Phase to "ZaPHD:ControlPLC:2083PhaseEngageWrite";
+
+int accelBankSetPointOK;
+assign accelBankSetPointOK to "ZaPHD:ControlPLC:AccelerationBankSetPointOKRead";
+monitor accelBankSetPointOK;
+
+int compressBankSetPointOK;
+assign compressBankSetPointOK to "ZaPHD:ControlPLC:CompressionBankSetPointOKRead";
+monitor compressBankSetPointOK;
+
+float bankHoldTime;
+assign bankHoldTime to "ZaPHD:ControlPLC:BankHoldTime";
+monitor bankHoldTime;
+
+int accelBankEnabled;
+assign accelBankEnabled to "ZaPHD:ControlPLC:AccelerationBankEnabledRead";
+monitor accelBankEnabled;
+
+int compressBankEnabled;
+assign compressBankEnabled to "ZaPHD:ControlPLC:CompressionBankEnabledRead";
+monitor compressBankEnabled;
+
+int engage208VAC;
+assign engage208VAC to "ZaPHD:ControlPLC:2083PhaseEngageWrite";
+
+int engage208VACRead;
+assign engage208VACRead to "ZaPHD:ControlPLC:2083PhaseEngageRead";
+monitor engage208VACRead;
+
+// Safe mode
+option +s;
+
+// Declare an event flag
+//evflag event_flag_name;
+
+//Optionally, synchronize with monitored variable
+//sync var_name event_flag_name;
+
+// Should be default. Make re-entrant. Allows running more then one copy DONT WANT THIS
+//option +r;
+
+
+// Start right away. Do not await connections DONT WANT THIS
+//option -c;
+
+// Declaring an event
+//evflag event_flag_name;
+
+// Synchronized with monitored variable
+//sync var_name event_flag_name;
+
+
+ss ss1 {
+
+  state init {
+
+    entry{
+      strcpy(stateValue, "Initialization");
+      pvPut(stateValue);
+      stateEnumeration=-1;
+      pvPut(stateEnumeration);
+    }
+
+    when (delay(1)) { 
+      printf("\nThe startup delay over for the ZaP-HD control state machine\n");
+    } state readyStart
+
+    exit{
+    }
+
+  }
+
+  state readyStart {
+
+    entry{
+      strcpy(stateValue, "Ready Start");
+      pvPut(stateValue);
+      stateEnumeration=0;
+      pvPut(stateEnumeration);
+    }
+
+    /*
+     * If start button is pressed, and safety interlock system is OK, and the EPICS heartbeat
+     * is okay, proceed to setup timing modules
+     */
+    when ( (startButton==1) && (safetyChain == 1) && (heartBeatOK == 1) ) {
+
+      /* Delay before reseting the startbutton */
+      epicsThreadSleep(0.5);
+
+      /* 
+       * Zeroing the start button in case it didn't zero. Don't want program to run 
+       * again if this didn't happen
+       */
+      startButton=0;
+      pvPut(startButton);
+
+      printf("\nZaP-HD Control Sequencer going to lifting ground relays from ready start\n");
+
+      /* 
+       * This will clear the log so it doesn't always show the same thing 
+       */
+      tempString = "Starting next pulse sequence";
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+
+      
+    } state liftingGroundRelays
+
+  }
+
+  state liftingGroundRelays {
+
+    entry{
+      strcpy(stateValue, "Lifting Ground Relays");
+      pvPut(stateValue);
+      stateEnumeration=1;
+      pvPut(stateEnumeration);
+
+      /*
+       * Lifting the ground relays
+       */
+      openGroundRelays = 1;
+      pvPut(openGroundRelays);
+
+      /*
+       * Engaging 208 3 Phase Power
+       */
+      engage208VAC = 1;
+      pvPut(engage208VAC);
+
+    }
+
+    /* If all PV's aren't connected, abort */
+    when (pvConnectCount() < pvAssignCount()) {
+      tempString = "ZaP-HD Control Sequencer PV Connection Broken in Lifting Ground Relays";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If nothing happens for set time, abort shot (Timeout) */
+    when (delay(10)) {
+      tempString = "ZaP-HD Control Sequencer Timeout in Lifting Ground Relays";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the safety interlock chain is broken, abort shot */
+    when (safetyChain != 1) {
+      tempString = "ZaP-HD Control Sequencer Safety Interlock Broken in Lifting Ground Relays";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the abort button is pressed, abort shot */
+    when (abortButton == 1) {
+      tempString = "ZaP-HD Control Sequencer Aborting Shot in Lifting Ground Relays"; 
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* 
+     * When all the enabled banks have the grounds open, and 208 3 Phase engaged, then continue to 
+     * the close charge relays state.
+     */
+    when ( (openGroundRelaysRead == 1) && (engage208VACRead == 1) ) {
+      epicsThreadSleep(2.0); // Wait for relays to fully close (just reading back output state)
+      printf("\nZaP-HD Control Sequencer Going to Closing Charging Relays ");
+      printf("from Lifting Ground Relays\n");
+    } state closingChargeRelays
+
+  }
+
+
+  state closingChargeRelays {
+
+    entry{
+      /* Writting value of state to PV */
+      strcpy(stateValue, "Closing Charge Relays");
+      pvPut(stateValue);
+      stateEnumeration=2;
+      pvPut(stateEnumeration);
+
+      /*
+       * Commanding charge relays to be closed. If they aren't enabled, the PLC logic will
+       * not allow them to close.
+       */
+      closeAccelChargeRelays = 1;
+      closeCompressChargeRelays = 1;
+      pvPut(closeAccelChargeRelays);
+      pvPut(closeCompressChargeRelays);
+
+    }
+
+    /* If all PV's aren't connected, abort */
+    when (pvConnectCount() < pvAssignCount()) {
+      tempString = "ZaP-HD Control Sequencer PV Connection Broken in Closing Charge Relays";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If nothing happens for set time, abort shot (Timeout) */
+    when (delay(10)) {
+      tempString = "ZaP-HD Control Sequencer Timeout in Closing Charge Relays";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the safety interlock chain is broken, abort shot */
+    when (safetyChain != 1) {
+      tempString = "ZaP-HD Control Sequencer Safety Interlock Broken in Closing Charge Relays";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the abort button is pressed, abort shot */
+    when (abortButton == 1) {
+      tempString = "ZaP-HD Control Sequencer Aborting Shot in Closing Charge Relays"; 
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* 
+     * The charge relays of all the enabled banks are closed, then proceed to Turning On HV PS
+     */
+    when ( ((accelBankEnabled == 0) || (closeAccelChargeRelaysRead ==1)) &&
+           ((compressBankEnabled == 0) || (closeCompressChargeRelaysRead == 1)) ) {
+      epicsThreadSleep(2.0); // Wait 1 seconds for relays to close (only read back outputs)
+      printf("\nZaP-HD Control Sequencer Going to Turn On HV PS and Charge from ");
+      printf("Closing Charging Relays\n");
+    } state turnOnHVPS
+
+  }
+
+  state turnOnHVPS {
+
+    entry{
+      /* Writting value of state to PV */
+      strcpy(stateValue, "Turning On Bank HV PS and charging");
+      pvPut(stateValue);
+      stateEnumeration=3;
+      pvPut(stateEnumeration);
+
+      /*
+       * If there is at least one enabled bank, turn on the HV PS
+       */
+      if ( (accelBankEnabled == 1) || (compressBankEnabled == 1) ) {
+      
+        /* Off hold */
+        hvPSOff = 1;
+        pvPut(hvPSOff);
+
+        /* Turn on on button */
+        hvPSOn = 1;
+        pvPut(hvPSOn);
+
+      }
+
+    }
+
+    /* If all PV's aren't connected, abort */
+    when (pvConnectCount() < pvAssignCount()) {
+      tempString = "ZaP-HD Control Sequencer PV Connection Broken in Turning On HV PS";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If nothing happens for set time, abort shot (Timeout) */
+    when (delay(180)) {
+      tempString = "ZaP-HD Control Sequencer Timeout in Turning On HV PS";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the safety interlock chain is broken, abort shot */
+    when (safetyChain != 1) {
+      tempString = "ZaP-HD Control Sequencer Safety Interlock Broken in Turning On HV PS";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the abort button is pressed, abort shot */
+    when (abortButton == 1) {
+      tempString = "ZaP-HD Control Sequencer Aborting Shot in Turning On HV PS"; 
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* 
+     * When all the enabled banks have hit their set points, advance to Holding PS's On
+     */
+    when ( ((accelBankEnabled == 0) || (accelBankSetPointOK == 1)) && 
+           ((compressBankEnabled == 0) || (compressBankSetPointOK == 1)) ) {
+      printf("\nZaP-HD Control Sequencer Going to Holding PS On and Charge from ");
+      printf("Turning On HV PS\n");
+
+      /*
+       * At this point, the HV PS Off and compression bank charging relays should be
+       * open. To prevent them from closing again when the set points clear, 
+       * the commands are zeroed.
+       */
+      closeCompressChargeRelays = 0;
+      pvPut(closeCompressChargeRelays);
+      hvPSOff = 0;
+      pvPut(hvPSOff);
+
+      epicsThreadSleep(1.0);
+ 
+    } state holdingPS
+
+  }
+
+
+  state holdingPS {
+
+    entry{
+      /* Writting value of state to PV */
+      strcpy(stateValue, "Holding Power Supplies");
+      pvPut(stateValue);
+      stateEnumeration=4;
+      pvPut(stateEnumeration);
+
+    }
+
+    /* If all PV's aren't connected, abort */
+    when (pvConnectCount() < pvAssignCount()) {
+      tempString = "ZaP-HD Control Sequencer PV Connection Broken in Holding Power Supplies";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If nothing happens for set time, abort shot (Timeout) */
+    when (delay(120)) {
+      tempString = "ZaP-HD Control Sequencer Timeout in Holding Power Supplies";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the safety interlock chain is broken, abort shot */
+    when (safetyChain != 1) {
+      tempString = "ZaP-HD Control Sequencer Safety Interlock Broken in Holding Power Supplies";
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /* If the abort button is pressed, abort shot */
+    when (abortButton == 1) {
+      tempString = "ZaP-HD Control Sequencer Aborting Shot in Holding Power Supplies"; 
+      printf("\n%s\n", tempString);
+      strcpy(errorMessage, tempString);
+      pvPut(errorMessage);
+    } state abortShot
+
+    /*
+     * When the prescribed hold time has been met, proceed to firing pulse.
+     */
+    when ( delay(bankHoldTime) ) {
+      printf("\nZaP-HD Control Sequencer Going to Firing Pulse from ");
+      printf("Holding Power Supplies\n");
+    } state firePulse
+
+  }
+
+  state firePulse {
+
+    entry{
+      /* Writting value of state to PV */
+      strcpy(stateValue, "Firing Pulse");
+      pvPut(stateValue);
+      stateEnumeration=5;
+      pvPut(stateEnumeration);
+
+      /*
+       * Set coil that fires shot to 1. Closes relay in PLC
+       * Needs to be re-zeroed
+       */
+      fireShot = 1;
+      pvPut(fireShot);
+
+    }
+    
+    when (delay(10)) {
+      
+      printf("\nZaP-HD Control Sequencer Going to shutDown from Firing Pulse\n");
+      
+    } state shutDown
+  }
+  
+  state abortShot {
+
+    entry{
+      /* Writting value of state to PV */
+      strcpy(stateValue, "Abort Shot");
+      pvPut(stateValue);
+      stateEnumeration=6;
+      pvPut(stateEnumeration);
+
+      /* Delay before reseting the abort button */
+      epicsThreadSleep(0.5);
+
+      /* Re-zero the abort button */
+      abortButton = 0;
+      pvPut(abortButton);
+    }
+
+    /* Just go immediately to Shut Down State */
+    when (1) {
+      printf("\nZaP-HD Control Sequencer Going to Shutdown from Abort Shot\n");
+    } state shutDown
+    
+  }
+
+
+  state shutDown {
+
+    entry{
+      /* Writting value of state to PV */
+      strcpy(stateValue, "Shutting Down");
+      pvPut(stateValue);
+      stateEnumeration=7;
+      pvPut(stateEnumeration);
+
+      /* Turning off hv ps */
+      hvPSOff = 0;
+      pvPut(hvPSOff);
+
+      epicsThreadSleep(0.5);
+
+      /*
+       * Turning of 208 3 Phase Power
+       */
+      engage208VAC = 0;
+      pvPut(engage208VAC);
+
+      /* Opens charging relays in case they aren't already and re-zeroed */
+      closeAccelChargeRelays = 0;
+      closeCompressChargeRelays = 0;
+      pvPut(closeAccelChargeRelays);
+      pvPut(closeCompressChargeRelays);
+
+      epicsThreadSleep(0.5);
+      
+      /*
+       * Closing the ground relays and re-zeroing
+       */
+      openGroundRelays = 0;
+      pvPut(openGroundRelays);
+
+      epicsThreadSleep(0.5);
+
+      /* Re-zeroing pv that starts a shot firing sequence */
+      fireShot = 0;
+      pvPut(fireShot);
+
+      /* Re-zeroing pv that starts a turn on hv ps sequence */
+      hvPSOn = 0;
+      pvPut(hvPSOn);
+
+    }
+
+    when (1) {
+      printf("\nZaP-HD Control Sequencer Shutdown Complete. Returning to Ready Start\n");
+    } state readyStart
+    
+  }
+
+}

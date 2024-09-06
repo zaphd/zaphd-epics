@@ -1,0 +1,70 @@
+# substitutions file for reading the outputs Y0-Y77 (64 Outputs) Modbus 2048 - 2111
+
+# These are for reading the outputs
+file "zaphdApp/Db/biBitAliasControl.template" { pattern
+{R,         PORT,             OFFSET,   ZNAM,   ONAM,  ZSV,       OSV,    SCAN,    DESC,  ALIAS}
+{"ZaPHD:ControlPLC:OpenGroundRossRelaysRead",	In_Coil1,	0,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2048:Read"}
+{"ZaPHD:ControlPLC:CloseAccelerationRossRelaysRead",	In_Coil1,	1,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2049:Read"}
+{"ZaPHD:ControlPLC:CloseCompressionRossRelaysRead",	In_Coil1,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2050:Read"}
+{"ZaPHD:ControlPLC:HVPSOnRead",	In_Coil1,	3,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2051:Read"}
+{"ZaPHD:ControlPLC:HVPSOffRead",	In_Coil1,	4,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2052:Read"}
+{"ZaPHD:ControlPLC:TriggerExperimentRead",	In_Coil1,	5,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2053:Read"}
+{"ZaPHD:ControlPLC:2083PhaseEngageRead",	In_Coil1,	6,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2054:Read"}
+{"ZaPHD:ControlPLC:RedDumpsLightOnRead",	In_Coil1,	7,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2055:Read"}
+{"ZaPHD:ControlPLC:DHICameraShutterOpenRead",	In_Coil1,	8,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2056:Read"}
+{"ZaPHDCoilBlankControlPLC:Y11",	In_Coil1,	9,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2057:Read"}
+{"ZaPHDCoilBlankControlPLC:Y12",	In_Coil1,	10,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2058:Read"}
+{"ZaPHDCoilBlankControlPLC:Y13",	In_Coil1,	11,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2059:Read"}
+{"ZaPHDCoilBlankControlPLC:Y14",	In_Coil1,	12,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2060:Read"}
+{"ZaPHDCoilBlankControlPLC:Y15",	In_Coil1,	13,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2061:Read"}
+{"ZaPHDCoilBlankControlPLC:Y16",	In_Coil1,	14,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2062:Read"}
+{"ZaPHDCoilBlankControlPLC:Y17",	In_Coil1,	15,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2063:Read"}
+{"ZaPHDCoilBlankControlPLC:Y20",	In_Coil1,	16,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2064:Read"}
+{"ZaPHDCoilBlankControlPLC:Y21",	In_Coil1,	17,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2065:Read"}
+{"ZaPHDCoilBlankControlPLC:Y22",	In_Coil1,	18,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2066:Read"}
+{"ZaPHDCoilBlankControlPLC:Y23",	In_Coil1,	19,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2067:Read"}
+{"ZaPHDCoilBlankControlPLC:Y24",	In_Coil1,	20,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2068:Read"}
+{"ZaPHDCoilBlankControlPLC:Y25",	In_Coil1,	21,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2069:Read"}
+{"ZaPHDCoilBlankControlPLC:Y26",	In_Coil1,	22,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2070:Read"}
+{"ZaPHDCoilBlankControlPLC:Y27",	In_Coil1,	23,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2071:Read"}
+{"ZaPHDCoilBlankControlPLC:Y30",	In_Coil1,	24,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2072:Read"}
+{"ZaPHDCoilBlankControlPLC:Y31",	In_Coil1,	25,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2073:Read"}
+{"ZaPHDCoilBlankControlPLC:Y32",	In_Coil1,	26,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2074:Read"}
+{"ZaPHDCoilBlankControlPLC:Y33",	In_Coil1,	27,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2075:Read"}
+{"ZaPHDCoilBlankControlPLC:Y34",	In_Coil1,	28,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2076:Read"}
+{"ZaPHDCoilBlankControlPLC:Y35",	In_Coil1,	29,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2077:Read"}
+{"ZaPHDCoilBlankControlPLC:Y36",	In_Coil1,	30,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2078:Read"}
+{"ZaPHDCoilBlankControlPLC:Y37",	In_Coil1,	31,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2079:Read"}
+{"ZaPHDCoilBlankControlPLC:Y40",	In_Coil1,	32,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2080:Read"}
+{"ZaPHDCoilBlankControlPLC:Y41",	In_Coil1,	33,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2081:Read"}
+{"ZaPHDCoilBlankControlPLC:Y42",	In_Coil1,	34,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2082:Read"}
+{"ZaPHDCoilBlankControlPLC:Y43",	In_Coil1,	35,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2083:Read"}
+{"ZaPHDCoilBlankControlPLC:Y44",	In_Coil1,	36,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2084:Read"}
+{"ZaPHDCoilBlankControlPLC:Y45",	In_Coil1,	37,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2085:Read"}
+{"ZaPHDCoilBlankControlPLC:Y46",	In_Coil1,	38,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2086:Read"}
+{"ZaPHDCoilBlankControlPLC:Y47",	In_Coil1,	39,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2087:Read"}
+{"ZaPHDCoilBlankControlPLC:Y50",	In_Coil1,	40,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2088:Read"}
+{"ZaPHDCoilBlankControlPLC:Y51",	In_Coil1,	41,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2089:Read"}
+{"ZaPHDCoilBlankControlPLC:Y52",	In_Coil1,	42,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2090:Read"}
+{"ZaPHDCoilBlankControlPLC:Y53",	In_Coil1,	43,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2091:Read"}
+{"ZaPHDCoilBlankControlPLC:Y54",	In_Coil1,	44,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2092:Read"}
+{"ZaPHDCoilBlankControlPLC:Y55",	In_Coil1,	45,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2093:Read"}
+{"ZaPHDCoilBlankControlPLC:Y56",	In_Coil1,	46,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2094:Read"}
+{"ZaPHDCoilBlankControlPLC:Y57",	In_Coil1,	47,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2095:Read"}
+{"ZaPHDCoilBlankControlPLC:Y60",	In_Coil1,	48,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2096:Read"}
+{"ZaPHDCoilBlankControlPLC:Y61",	In_Coil1,	49,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2097:Read"}
+{"ZaPHDCoilBlankControlPLC:Y62",	In_Coil1,	50,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2098:Read"}
+{"ZaPHDCoilBlankControlPLC:Y63",	In_Coil1,	51,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2099:Read"}
+{"ZaPHDCoilBlankControlPLC:Y64",	In_Coil1,	52,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2100:Read"}
+{"ZaPHDCoilBlankControlPLC:Y65",	In_Coil1,	53,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2101:Read"}
+{"ZaPHDCoilBlankControlPLC:Y66",	In_Coil1,	54,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2102:Read"}
+{"ZaPHDCoilBlankControlPLC:Y67",	In_Coil1,	55,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2103:Read"}
+{"ZaPHDCoilBlankControlPLC:Y70",	In_Coil1,	56,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2104:Read"}
+{"ZaPHDCoilBlankControlPLC:Y71",	In_Coil1,	57,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2105:Read"}
+{"ZaPHDCoilBlankControlPLC:Y72",	In_Coil1,	58,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2106:Read"}
+{"ZaPHDCoilBlankControlPLC:Y73",	In_Coil1,	59,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2107:Read"}
+{"ZaPHDCoilBlankControlPLC:Y74",	In_Coil1,	60,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2108:Read"}
+{"ZaPHDCoilBlankControlPLC:Y75",	In_Coil1,	61,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2109:Read"}
+{"ZaPHDCoilBlankControlPLC:Y76",	In_Coil1,	62,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2110:Read"}
+{"ZaPHDCoilBlankControlPLC:Y77",	In_Coil1,	63,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2111:Read"}
+}

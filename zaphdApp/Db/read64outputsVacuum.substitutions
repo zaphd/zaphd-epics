@@ -1,0 +1,70 @@
+# substitutions file for reading the outputs Y0-Y77 (64 Outputs) Modbus 2048 - 2111
+
+# These are for reading the outputs
+file "zaphdApp/Db/bi_bitAliasVacuum.template" { pattern
+{R,         PORT,             OFFSET,   ZNAM,   ONAM,  ZSV,       OSV,    SCAN,    DESC,  ALIAS}
+{"ZaPHD:VacuumPLC:PowerOn:L1",	In_Coil1,	0,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y0",	"ZaPHD:VacuumPLC:Coil2048:Read"}
+{"ZaPHD:VacuumPLC:PowerOn:L2",	In_Coil1,	1,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y1",	"ZaPHD:VacuumPLC:Coil2049:Read"}
+{"ZaPHD:VacuumPLC:PumpDownMode:L1",	In_Coil1,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y2",	"ZaPHD:VacuumPLC:Coil2050:Read"}
+{"ZaPHD:VacuumPLC:PumpDownMode:L2",	In_Coil1,	3,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y3",	"ZaPHD:VacuumPLC:Coil2051:Read"}
+{"ZaPHD:VacuumPLC:RoughPump:L1",	In_Coil1,	4,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y4",	"ZaPHD:VacuumPLC:Coil2052:Read"}
+{"ZaPHD:VacuumPLC:RoughPump:L2",	In_Coil1,	5,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y5",	"ZaPHD:VacuumPLC:Coil2053:Read"}
+{"ZaPHD:VacuumPLC:RootsBlower:L1",	In_Coil1,	6,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y6",	"ZaPHD:VacuumPLC:Coil2054:Read"}
+{"ZaPHD:VacuumPLC:RootsBlower:L2",	In_Coil1,	7,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y7",	"ZaPHD:VacuumPLC:Coil2055:Read"}
+{"ZaPHD:VacuumPLC:Chiller:L1",	In_Coil1,	8,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y10",	"ZaPHD:VacuumPLC:Coil2056:Read"}
+{"ZaPHD:VacuumPLC:Chiller:L2",	In_Coil1,	9,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y11",	"ZaPHD:VacuumPLC:Coil2057:Read"}
+{"CoilBlank:ZaPHDVacuum:Y12",	In_Coil1,	10,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y12",	"ZaPHD:VacuumPLC:Coil2058:Read"}
+{"CoilBlank:ZaPHDVacuum:Y13",	In_Coil1,	11,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y13",	"ZaPHD:VacuumPLC:Coil2059:Read"}
+{"ZaPHD:VacuumPLC:Foreline:L1",	In_Coil1,	12,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y14",	"ZaPHD:VacuumPLC:Coil2060:Read"}
+{"ZaPHD:VacuumPLC:Foreline:L2",	In_Coil1,	13,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y15",	"ZaPHD:VacuumPLC:Coil2061:Read"}
+{"ZaPHD:VacuumPLC:Windows:L1",	In_Coil1,	14,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y16",	"ZaPHD:VacuumPLC:Coil2062:Read"}
+{"ZaPHD:VacuumPLC:Windows:L2",	In_Coil1,	15,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y17",	"ZaPHD:VacuumPLC:Coil2063:Read"}
+{"ZaPHD:VacuumPLC:Turbo:L1",	In_Coil1,	16,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y20",	"ZaPHD:VacuumPLC:Coil2064:Read"}
+{"ZaPHD:VacuumPLC:Turbo:L2",	In_Coil1,	17,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y21",	"ZaPHD:VacuumPLC:Coil2065:Read"}
+{"CoilBlank:ZaPHDVacuum:Y22",	In_Coil1,	18,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y22",	"ZaPHD:VacuumPLC:Coil2066:Read"}
+{"CoilBlank:ZaPHDVacuum:Y23",	In_Coil1,	19,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y23",	"ZaPHD:VacuumPLC:Coil2067:Read"}
+{"ZaPHD:VacuumPLC:HVV:L1",	In_Coil1,	20,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y24",	"ZaPHD:VacuumPLC:Coil2068:Read"}
+{"ZaPHD:VacuumPLC:HVV:L2",	In_Coil1,	21,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y25",	"ZaPHD:VacuumPLC:Coil2069:Read"}
+{"ZaPHD:VacuumPLC:Bypass:L1",	In_Coil1,	22,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y26",	"ZaPHD:VacuumPLC:Coil2070:Read"}
+{"ZaPHD:VacuumPLC:Bypass:L2",	In_Coil1,	23,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y27",	"ZaPHD:VacuumPLC:Coil2071:Read"}
+{"ZaPHD:VacuumPLC:ChamberRough:L1",	In_Coil1,	24,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y30",	"ZaPHD:VacuumPLC:Coil2072:Read"}
+{"ZaPHD:VacuumPLC:ChamberRough:L2",	In_Coil1,	25,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y31",	"ZaPHD:VacuumPLC:Coil2073:Read"}
+{"ZaPHD:VacuumPLC:ColdRough:L1",	In_Coil1,	26,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y32",	"ZaPHD:VacuumPLC:Coil2074:Read"}
+{"ZaPHD:VacuumPLC:ColdRough:L2",	In_Coil1,	27,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y33",	"ZaPHD:VacuumPLC:Coil2075:Read"}
+{"CoilBlank:ZaPHDVacuum:Y34",	In_Coil1,	28,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y34",	"ZaPHD:VacuumPLC:Coil2076:Read"}
+{"CoilBlank:ZaPHDVacuum:Y35",	In_Coil1,	29,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y35",	"ZaPHD:VacuumPLC:Coil2077:Read"}
+{"CoilBlank:ZaPHDVacuum:Y36",	In_Coil1,	30,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y36",	"ZaPHD:VacuumPLC:Coil2078:Read"}
+{"CoilBlank:ZaPHDVacuum:Y37",	In_Coil1,	31,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y37",	"ZaPHD:VacuumPLC:Coil2079:Read"}
+{"CoilBlank:ZaPHDVacuum:Y40",	In_Coil1,	32,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y40",	"ZaPHD:VacuumPLC:Coil2080:Read"}
+{"CoilBlank:ZaPHDVacuum:Y41",	In_Coil1,	33,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y41",	"ZaPHD:VacuumPLC:Coil2081:Read"}
+{"CoilBlank:ZaPHDVacuum:Y42",	In_Coil1,	34,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y42",	"ZaPHD:VacuumPLC:Coil2082:Read"}
+{"CoilBlank:ZaPHDVacuum:Y43",	In_Coil1,	35,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y43",	"ZaPHD:VacuumPLC:Coil2083:Read"}
+{"CoilBlank:ZaPHDVacuum:Y44",	In_Coil1,	36,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y44",	"ZaPHD:VacuumPLC:Coil2084:Read"}
+{"CoilBlank:ZaPHDVacuum:Y45",	In_Coil1,	37,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y45",	"ZaPHD:VacuumPLC:Coil2085:Read"}
+{"CoilBlank:ZaPHDVacuum:Y46",	In_Coil1,	38,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y46",	"ZaPHD:VacuumPLC:Coil2086:Read"}
+{"CoilBlank:ZaPHDVacuum:Y47",	In_Coil1,	39,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y47",	"ZaPHD:VacuumPLC:Coil2087:Read"}
+{"CoilBlank:ZaPHDVacuum:Y50",	In_Coil1,	40,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y50",	"ZaPHD:VacuumPLC:Coil2088:Read"}
+{"CoilBlank:ZaPHDVacuum:Y51",	In_Coil1,	41,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y51",	"ZaPHD:VacuumPLC:Coil2089:Read"}
+{"CoilBlank:ZaPHDVacuum:Y52",	In_Coil1,	42,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y52",	"ZaPHD:VacuumPLC:Coil2090:Read"}
+{"CoilBlank:ZaPHDVacuum:Y53",	In_Coil1,	43,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y53",	"ZaPHD:VacuumPLC:Coil2091:Read"}
+{"CoilBlank:ZaPHDVacuum:Y54",	In_Coil1,	44,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y54",	"ZaPHD:VacuumPLC:Coil2092:Read"}
+{"CoilBlank:ZaPHDVacuum:Y55",	In_Coil1,	45,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y55",	"ZaPHD:VacuumPLC:Coil2093:Read"}
+{"CoilBlank:ZaPHDVacuum:Y56",	In_Coil1,	46,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y56",	"ZaPHD:VacuumPLC:Coil2094:Read"}
+{"CoilBlank:ZaPHDVacuum:Y57",	In_Coil1,	47,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y57",	"ZaPHD:VacuumPLC:Coil2095:Read"}
+{"CoilBlank:ZaPHDVacuum:Y60",	In_Coil1,	48,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y60",	"ZaPHD:VacuumPLC:Coil2096:Read"}
+{"CoilBlank:ZaPHDVacuum:Y61",	In_Coil1,	49,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y61",	"ZaPHD:VacuumPLC:Coil2097:Read"}
+{"CoilBlank:ZaPHDVacuum:Y62",	In_Coil1,	50,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y62",	"ZaPHD:VacuumPLC:Coil2098:Read"}
+{"CoilBlank:ZaPHDVacuum:Y63",	In_Coil1,	51,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y63",	"ZaPHD:VacuumPLC:Coil2099:Read"}
+{"CoilBlank:ZaPHDVacuum:Y64",	In_Coil1,	52,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y64",	"ZaPHD:VacuumPLC:Coil2100:Read"}
+{"CoilBlank:ZaPHDVacuum:Y65",	In_Coil1,	53,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y65",	"ZaPHD:VacuumPLC:Coil2101:Read"}
+{"CoilBlank:ZaPHDVacuum:Y66",	In_Coil1,	54,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y66",	"ZaPHD:VacuumPLC:Coil2102:Read"}
+{"CoilBlank:ZaPHDVacuum:Y67",	In_Coil1,	55,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y67",	"ZaPHD:VacuumPLC:Coil2103:Read"}
+{"CoilBlank:ZaPHDVacuum:Y70",	In_Coil1,	56,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y70",	"ZaPHD:VacuumPLC:Coil2104:Read"}
+{"CoilBlank:ZaPHDVacuum:Y71",	In_Coil1,	57,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y71",	"ZaPHD:VacuumPLC:Coil2105:Read"}
+{"CoilBlank:ZaPHDVacuum:Y72",	In_Coil1,	58,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y72",	"ZaPHD:VacuumPLC:Coil2106:Read"}
+{"CoilBlank:ZaPHDVacuum:Y73",	In_Coil1,	59,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y73",	"ZaPHD:VacuumPLC:Coil2107:Read"}
+{"CoilBlank:ZaPHDVacuum:Y74",	In_Coil1,	60,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y74",	"ZaPHD:VacuumPLC:Coil2108:Read"}
+{"CoilBlank:ZaPHDVacuum:Y75",	In_Coil1,	61,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y75",	"ZaPHD:VacuumPLC:Coil2109:Read"}
+{"CoilBlank:ZaPHDVacuum:Y76",	In_Coil1,	62,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y76",	"ZaPHD:VacuumPLC:Coil2110:Read"}
+{"CoilBlank:ZaPHDVacuum:Y77",	In_Coil1,	63,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"Y77",	"ZaPHD:VacuumPLC:Coil2111:Read"}
+}

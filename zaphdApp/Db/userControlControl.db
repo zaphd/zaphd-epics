@@ -1,0 +1,60 @@
+# String name of state the state machine is in
+record(stringout, "ZaPHD:ControlPLC:ControlStateName")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+}
+
+# Numer to denote what state the system is in.
+# Used by CSS user interface
+record(longout, "ZaPHD:ControlPLC:ControlStateEnumeration")
+{
+  field(PINI, "YES")
+  field(VAL, "0")
+  field(SCAN, "Passive")
+}
+
+# Button pressed by user to start machine
+record(bo, "ZaPHD:ControlPLC:ExperimentStartButton")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+  field(ONAM, "1")
+  field(ZNAM, "0")
+}
+
+# Button pressed by user to abort program
+record(bo, "ZaPHD:ControlPLC:ExperimentAbortButton")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+  field(ONAM, "1")
+  field(ZNAM, "0")
+}
+
+# Button pressed by user to enter manual mode
+record(bo, "ZaPHD:ControlPLC:ExperimentManualMode")
+{
+  field(PINI, "YES")
+  field(SCAN, "Passive")
+  field(ONAM, "1")
+  field(ZNAM, "0")
+}
+
+# This is the waveform record to handle any error messages
+record(waveform, "ZaPHD:ControlPLC:ErrorMessage") {
+  field(NELM, "500")
+  field(FTVL, "CHAR")
+}
+
+# This is the hold time of the capacitor bank
+record(ao, "ZaPHD:ControlPLC:BankHoldTime")
+{
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(VAL, "0")
+  field(EGU, "sec")
+  field(DRVL, "1")
+  field(DRVH, "180")
+  field(PREC, "0")
+}

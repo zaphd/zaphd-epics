@@ -1,0 +1,28 @@
+# These are reading the holding registers from the vacuum PLC. These are BCD values
+file "zaphdApp/Db/plcHoldingRegisterReadVacuum.template" { pattern
+{ SUBSYS,        GROUP, DEVICE,        PORT, OFFSET, TIMEOUT, UNITS, PREC,            PVREADNAME,  CALCFIELD,                            DESCRIPTION,                                   FLNK}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      0,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3310,   "A*1E-3",    "V3310x1E-3 for roughline pressure", "ZaPHD:VacuumPLC:Roughline:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      1,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3311,     "A*10",      "V3311x10 for roughline pressure", "ZaPHD:VacuumPLC:Roughline:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      2,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3312,   "A*1E-3",     "V3312x1E-3 for foreline pressure", "ZaPHD:VacuumPLC:Foreline:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      3,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3313,     "A*10",       "V3313x10 for foreline pressure", "ZaPHD:VacuumPLC:Foreline:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      4,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3314,   "A*1E-3",  "V3314x1E-3 for windowsline pressure", "ZaPHD:VacuumPLC:Windowsline:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      5,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3315,     "A*10",    "V3315x10 for windowsline pressure", "ZaPHD:VacuumPLC:Windowsline:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      6,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3316,   "A*1E-3",   "V3314x1E-3 for bypassline pressure", "ZaPHD:VacuumPLC:Bypass:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      7,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3317,     "A*10",     "V3315x10 for bypassline pressure", "ZaPHD:VacuumPLC:Bypass:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      8,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3320,   "A*1E-3",  "V3320x1E-3 for chamberline pressure", "ZaPHD:VacuumPLC:Chamber:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem1,      9,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V3321,     "A*10",    "V3321x10 for chamberline pressure", "ZaPHD:VacuumPLC:Chamber:Pressure"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      0,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1400,   "A*1E-3",    "V1400x1E-3 for rough sp1 pressure", "ZaPHD:VacuumPLC:Roughline:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      1,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1401,     "A*10",      "V1401x10 for rough sp1 pressure", "ZaPHD:VacuumPLC:Roughline:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      2,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1402,   "A*1E-3",    "V1402x1E-3 for rough sp2 pressure", "ZaPHD:VacuumPLC:Roughline:SetPoint2"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      3,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1403,     "A*10",      "V1403x10 for rough sp2 pressure", "ZaPHD:VacuumPLC:Roughline:SetPoint2"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      4,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1404,   "A*1E-3",     "V1404x1E-3 for fore sp1 pressure", "ZaPHD:VacuumPLC:Foreline:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      5,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1405,     "A*10",       "V1405x10 for fore sp1 pressure", "ZaPHD:VacuumPLC:Foreline:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      6,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1406,   "A*1E-3",  "V1406x1E-3 for windows sp1 pressure", "ZaPHD:VacuumPLC:Windowsline:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      7,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1407,     "A*10",    "V1407x10 for windows sp1 pressure", "ZaPHD:VacuumPLC:Windowsline:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      8,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1410,   "A*1E-3",  "V1410x1E-3 for chamber sp1 pressure", "ZaPHD:VacuumPLC:Chamber:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,      9,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1411,     "A*10",    "V1411x10 for chamber sp1 pressure", "ZaPHD:VacuumPLC:Chamber:SetPoint1"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,     10,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1412,   "A*1E-3",  "V1412x1E-3 for chamber sp2 pressure", "ZaPHD:VacuumPLC:Chamber:SetPoint2"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem2,     11,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V1413,     "A*10",    "V1413x10 for chamber sp2 pressure", "ZaPHD:VacuumPLC:Chamber:SetPoint2"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem4,      0,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V2040,   "A*1E-3",    "V2040x1E-3 for ion gauge pressure", "ZaPHD:VacuumPLC:IonGauge:RawReading"}
+{   ZaPHD,   VacuumPLC,   DL205, Press_Vmem4,      1,    5000,  Torr,    1,  ZaPHD:VacuumPLC:V2041,     "A*10",      "V2041x10 for ion gauge pressure", "ZaPHD:VacuumPLC:IonGauge:RawReading"}
+}
