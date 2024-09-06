@@ -4,6 +4,9 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------
 #  ADD MACRO DEFINITIONS BELOW HERE
 
+# Use typed rset structure (see 3.16.1 release notes)
+USR_CPPFLAGS += -DUSE_TYPED_RSET
+
 # xxxRecord.h will be created from xxxRecord.dbd
 #DBDINC += xxxRecord
 
@@ -24,6 +27,11 @@ zaphdSupport_SRCS += initTrace.c
 
 zaphdSupport_LIBS += $(EPICS_BASE_IOC_LIBS)
 
+# Auto-generate a header file containing a version string.
+# Version comes from the VCS if available, else date+time.
+GENVERSION = testVersion.h
+# Macro name
+GENVERSIONMACRO = testVERSION
 
 # Build the IOC application
 PROD_IOC = zaphd
@@ -39,17 +47,17 @@ zaphd_DBD += modbusSupport.dbd
 zaphd_DBD += devGpib.dbd
 zaphd_DBD += drvVxi11.dbd
 zaphd_DBD += devAsynOctet.dbd
-zaphd_DBD += devAsynUInt64Digital.dbd
+zaphd_DBD += devAsynUInt32Digital.dbd
 zaphd_DBD += devAsynInt32.dbd
 zaphd_DBD += devEpics.dbd
-zaphd_DBD += devAsynInt32Array.dbd
+zaphd_DBD += devAsynInt64Array.dbd
 zaphd_DBD += devAsynRecord.dbd
 zaphd_DBD += drvAsynSerialPort.dbd
 zaphd_DBD += drvAsynIPPort.dbd
 zaphd_DBD += stream.dbd
 zaphd_DBD += asSupport.dbd
 zaphd_DBD += initTrace.dbd
-vacuum_DBD += dbSubEmailAlert.dbd
+zaphd_DBD += dbSubVacuumEmailAlert.dbd
 
 # zaphd_registerRecordDeviceDriver.cpp derives from zaphd.dbd
 zaphd_SRCS += zaphd_registerRecordDeviceDriver.cpp
@@ -81,6 +89,14 @@ ifneq ($(SNCSEQ),)
     zaphd_DBD += sncZaPHD.dbd
     zaphdSupport_SRCS += sncZaPHD.stt
 
+endif
+
+# Link QSRV (pvAccess Server) if available
+ifdef EPICS_QSRV_MAJOR_VERSION
+    zaphd_LIBS += qsrv
+    zaphd_LIBS += $(EPICS_BASE_PVA_CORE_LIBS)
+    zaphd_DBD += PVAServerRegister.dbd
+    zaphd_DBD += qsrv.dbd
 endif
 
 # Finally link IOC to the EPICS Base libraries

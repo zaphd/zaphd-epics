@@ -2,6 +2,23 @@
 
 New repository for EPICS installation to be used for ZaP-HD
 
+## Docker
+
+Given the complexity of installing EPICS, I have determined it is easier to run it in a Docker container. To do so, first start by installing docker. The best way to do this as my following the instructions on the Docker website:
+
+[Install Docker](https://docs.docker.com/engine/install/)
+
+In the home directory of this repo, type this to build the epics image:
+`sudo docker buildx build -f 'Dockerfile' -t 'epics' .`
+
+You can create a volume for the autosave files with:
+`docker volume create autosave`
+
+Then, to run a test version of the epics image with this volume:
+`sudo docker run -v autosave:/var/autosavefiles -it --rm epics`
+
+
+
 ## Installing EPICS
 
 Here are the dependencies for an Ubuntu install (different for Fedora):

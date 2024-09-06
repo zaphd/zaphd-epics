@@ -75,9 +75,8 @@ dbLoadRecords("db/IocHeartbeatVacuum.db", "SubSys=ZaPHD:VacuumPLC")
 
 
 
-
-
 # Files restored after record initilization
+set_requestfile_path("$(TOP)/iocBoot/$(IOC)", "autosaverequests")
 set_pass1_restoreFile(zaphd_autosave.sav)
 
 cd "${TOP}/iocBoot/${IOC}"
@@ -87,4 +86,5 @@ iocInit
 seq sncZaPHD
 
 # save positions every 10 minutes
+set_savefile_path("/var/autosavefiles")
 create_monitor_set("zaphd_autosave.req", 600)
