@@ -31,7 +31,7 @@ static long zaphdVacuumEmailAlert(subRecord *precord)
   if (select == 1) {
 
     printf("High Vacuum Valve Closed, executing python script\n");
-    ret = system("/home/zaphd/zaphd-epics/bin/linux-x86_64/hvvEmailAlert.py");
+    ret = system("/home/zaphd/zaphd-epics/bin/linux-x86_64/hvvVacuumEmailAlert.py");
 
     if (ret != 0) {
     printf("Error happened while trying to call hvvEmailAlert.py. Returned %d\n", ret);

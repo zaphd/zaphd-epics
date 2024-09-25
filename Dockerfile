@@ -2,7 +2,7 @@ FROM ubuntu:latest
 
 ## Updating repository
 
-RUN apt-get update && apt-get install -y libreadline-dev libnet1-dev libpcap-dev libpcre3-dev re2c make gcc g++ libtirpc-dev git
+RUN apt-get update && apt-get install -y libreadline-dev libnet1-dev libpcap-dev libpcre3-dev re2c make gcc g++ libtirpc-dev git python3
 
 
 ## Installing EPICS
