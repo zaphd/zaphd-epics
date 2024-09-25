@@ -6,7 +6,7 @@
 #Waveform array for writing out the Coils
 file "zaphdApp/Db/intarray_outVacuum.template" { pattern
 {P,           R,            PORT,                  NELM}
-{DL:ZaPHDVac:,         CnOutWArray,  Out_Word,    32}
+{DL:ZaPHDVac:,         CnOutWArray,  Vac_Out_Word,    32}
 }
 #Binary Out Coils
 file "zaphdApp/Db/DLBOAliasVacuum.template" { pattern

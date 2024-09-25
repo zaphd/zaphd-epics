@@ -54,9 +54,9 @@ modbusInterposeConfig("VacuumPLC", 0, 1000, 0)
 drvModbusAsynConfigure("Press_Vmem1", "VacuumPLC",0,3,03310,10,2,100,"DirectLOGIC")
 drvModbusAsynConfigure("Press_Vmem2", "VacuumPLC",0,3,01400,12,2,100,"DirectLOGIC")
 drvModbusAsynConfigure("Press_Vmem4", "VacuumPLC",0,3,02040,2,2,100,"DirectLOGIC")
-drvModbusAsynConfigure("Out_Word", "VacuumPLC", 0, 15, 3200, 32, 0, 100, "DirectLOGIC")
-drvModbusAsynConfigure("In_Coil1", "VacuumPLC", 0, 1, 2048, 64, 0, 100, "DirectLOGIC")
-drvModbusAsynConfigure("In_Coil2", "VacuumPLC", 0, 1, 3136, 16, 0, 100, "DirectLOGIC")
+drvModbusAsynConfigure("Vac_Out_Word", "VacuumPLC", 0, 15, 3200, 32, 0, 100, "DirectLOGIC")
+drvModbusAsynConfigure("Vac_In_Coil1", "VacuumPLC", 0, 1, 2048, 64, 0, 100, "DirectLOGIC")
+drvModbusAsynConfigure("Vac_In_Coil2", "VacuumPLC", 0, 1, 3136, 16, 0, 100, "DirectLOGIC")
 
 #Load Templates 
 dbLoadTemplate("db/ForceCoilsAliasVacuum.substitutions")
