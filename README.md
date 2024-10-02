@@ -15,7 +15,7 @@ You can create a volume for the autosave files with:
 `docker volume create autosave`
 
 Then, to run a test version of the epics image with this volume:
-`sudo docker run -v autosave:/var/autosavefiles -it --rm epics`
+`sudo docker run --network=host -v autosave:/var/autosavefiles -it --rm epics`
 
 
 
