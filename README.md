@@ -15,7 +15,16 @@ You can create a volume for the autosave files with:
 `docker volume create autosave`
 
 Then, to run a test version of the epics image with this volume:
-`sudo docker run -v autosave:/var/autosavefiles -it --rm epics`
+`sudo docker run --network=host -v autosave:/var/autosavefiles -it --rm epics`
+
+## Deploying Docker Container
+
+To make a container named "zap-ioc" that runs in the background:
+`sudo docker run -d --name zap-ioc --network=host -v autosave:/var/autosavefiles -it --rm epics`
+
+This will make a docker container and automatically start the zap-ioc. If you need to attach to the container, `sudo docker container attach zap-ioc` to detach use Ctrl-p + Ctrl-q. 
+
+To stop the zap-ioc: `docker stop zap-ioc` from outside the containier
 
 
 
