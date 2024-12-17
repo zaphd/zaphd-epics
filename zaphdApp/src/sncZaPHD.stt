@@ -384,6 +384,9 @@ ss ss1 {
       pvPut(hvPSOff);
 
       epicsThreadSleep(1.0);
+      closeAccelChargeRelays = 0;
+      pvPut(closeAccelChargeRelays);
+      epicsThreadSleep(1.0);
  
     } state holdingPS
 
