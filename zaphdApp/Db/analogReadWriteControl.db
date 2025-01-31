@@ -9,6 +9,28 @@ record(calc,"$(SubSys):BankVoltage") {
  field(PREC,"2")
 }
 
+# Converting analog input read CH. 2 to accel bank voltage. 5V => 10kV
+record(calc,"$(SubSys):AccelBankVoltage"){
+ field(DESC,"Acceleration Bank Voltage")
+ field(SCAN,"Passive")
+ field(CALC,"A/4095*10*(1-2*B)")
+ field(INPA,"ZaPHD:ControlPLC:ReadAccelBankVoltagePLC")
+ field(INPB,"ZaPHD:ControlPLC:Ch2SignRead")
+ field(EGU,"kV")
+ field(PREC,"2")
+}
+
+# Converting analog input read Ch. 3 to compress bank voltage. 5V => 10kV
+record(calc,"$(SubSys):CompressBankVoltage"){
+ field(DESC,"Compression Bank Voltage")
+ field(SCAN,"Passive")
+ field(CALC,"A/4095*10*(1-2*B)")
+ field(INPA,"ZaPHD:ControlPLC:ReadCompressBankVoltagePLC")
+ field(INPB,"ZaPHD:ControlPLC:Ch3SignRead")
+ field(EGU,"kV")
+ field(PREC,"2")
+}
+
 # This is the set point for the acceleration bank to be written to the PLC
 record(ao, "$(SubSys):AccelerationBankSetPoint")
 {

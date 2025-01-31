@@ -4,8 +4,8 @@
 file "zaphdApp/Db/biBitAliasControl.template" { pattern
 {R,         PORT,             OFFSET,   ZNAM,   ONAM,  ZSV,       OSV,    SCAN,    DESC,  ALIAS}
 {"ZaPHD:ControlPLC:Ch1SignRead",	In_Coil2,	0,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3135:Read"}
-{"ZaPHDBlank:ControlPLC:C101",	In_Coil2,	1,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3136:Read"}
-{"ZaPHDBlank:ControlPLC:C102",	In_Coil2,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3137:Read"}
+{"ZaPHD:ControlPLC:Ch2SignRead",	In_Coil2,	1,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3136:Read"}
+{"ZaPHD:ControlPLC:Ch3SignRead",	In_Coil2,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3137:Read"}
 {"ZaPHDBlank:ControlPLC:C103",	In_Coil2,	3,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3138:Read"}
 {"ZaPHDBlank:ControlPLC:C104",	In_Coil2,	4,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3139:Read"}
 {"ZaPHDBlank:ControlPLC:C105",	In_Coil2,	5,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ZaPHDControlPLC:Coil3140:Read"}

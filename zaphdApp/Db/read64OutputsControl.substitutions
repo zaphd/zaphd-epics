@@ -5,16 +5,16 @@ file "zaphdApp/Db/biBitAliasControl.template" { pattern
 {R,         PORT,             OFFSET,   ZNAM,   ONAM,  ZSV,       OSV,    SCAN,    DESC,  ALIAS}
 {"ZaPHD:ControlPLC:OpenGroundRossRelaysRead",	In_Coil1,	0,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2048:Read"}
 {"ZaPHD:ControlPLC:CloseAccelerationRossRelaysRead",	In_Coil1,	1,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2049:Read"}
-{"ZaPHD:ControlPLC:CloseCompressionRossRelaysRead",	In_Coil1,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2050:Read"}
+{"ZaPHD:ControlPLC:CloseCompressionSnubRossRelayRead",	In_Coil1,	2,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2050:Read"}
 {"ZaPHD:ControlPLC:HVPSOnRead",	In_Coil1,	3,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2051:Read"}
 {"ZaPHD:ControlPLC:HVPSOffRead",	In_Coil1,	4,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2052:Read"}
 {"ZaPHD:ControlPLC:TriggerExperimentRead",	In_Coil1,	5,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2053:Read"}
 {"ZaPHD:ControlPLC:2083PhaseEngageRead",	In_Coil1,	6,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2054:Read"}
 {"ZaPHD:ControlPLC:RedDumpsLightOnRead",	In_Coil1,	7,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2055:Read"}
 {"ZaPHD:ControlPLC:DHICameraShutterOpenRead",	In_Coil1,	8,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2056:Read"}
-{"ZaPHDCoilBlankControlPLC:Y11",	In_Coil1,	9,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2057:Read"}
-{"ZaPHDCoilBlankControlPLC:Y12",	In_Coil1,	10,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2058:Read"}
-{"ZaPHDCoilBlankControlPLC:Y13",	In_Coil1,	11,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2059:Read"}
+{"ZaPHD:ControlPLC:CloseAccelerationSnubRossRelayRead",	In_Coil1,	9,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2057:Read"}
+{"ZaPHD:ControlPLC:CloseCompressionRossRelaysRead",	In_Coil1,	10,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2058:Read"}
+{"ZaPHD:ControlPLC:CloseChargeGroundRossRelayRead",	In_Coil1,	11,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2059:Read"}
 {"ZaPHDCoilBlankControlPLC:Y14",	In_Coil1,	12,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2060:Read"}
 {"ZaPHDCoilBlankControlPLC:Y15",	In_Coil1,	13,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2061:Read"}
 {"ZaPHDCoilBlankControlPLC:Y16",	In_Coil1,	14,	"Zero",	"One",	NO_ALARM,	NO_ALARM,	"I/O Intr",	"xx",	"ZaPHD:ControlPLC:Coil2062:Read"}

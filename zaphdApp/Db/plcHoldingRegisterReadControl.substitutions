@@ -1,5 +1,7 @@
-# These are reading the holding registers from the vacuum PLC. These are BCD values
+# These are reading the holding registers from the Control PLC. These are BCD values
 file "zaphdApp/Db/plcHoldingRegisterReadControl.template" { pattern
 { SUBSYS,        GROUP, DEVICE,        PORT, OFFSET, TIMEOUT, UNITS, PREC,                           PVREADNAME, CALCFIELD,                   DESCRIPTION,                           FLNK}
-{   ZaPHD,   VacuumPLC,   DL205, Read_Vmem1,      0,    5000,   kV,    1,   ZaPHD:ControlPLC:ReadBankVoltagePLC,       "A",    "Reading the bank voltage", "ZaPHD:ControlPLC:BankVoltage"}
+{   ZaPHD,   ControlPLC,   DL205, Read_Vmem1,      0,    5000,   kV,    1,   ZaPHD:ControlPLC:ReadBankVoltagePLC,       "A",    "Reading the bank voltage", "ZaPHD:ControlPLC:BankVoltage"}
+{   ZaPHD,   ControlPLC,   DL205, Read_Vmem1,	   1,	 5000,	 kV,	1,   ZaPHD:ControlPLC:ReadAccelBankVoltagePLC,	"A",	"Reading acceleration bank voltage",	"ZaPHD:ControlPLC:AccelBankVoltage"}
+{   ZaPHD,   ControlPLC,   DL205, Read_Vmem1,	   2,	 5000,	 kV,	1,   ZaPHD:ControlPLC:ReadCompressBankVoltagePLC,	"A",	 "Reading compression bank voltage",	"ZaPHD:ControlPLC:CompressBankVoltage"}
 }

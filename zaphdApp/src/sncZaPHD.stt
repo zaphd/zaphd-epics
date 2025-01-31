@@ -44,12 +44,27 @@ int openGroundRelaysRead;
 assign openGroundRelaysRead to "ZaPHD:ControlPLC:OpenGroundRossRelaysRead";
 monitor openGroundRelaysRead;
 
+int closeChargeGroundRelay;
+assign closeChargeGroundRelay to "ZaPHD:ControlPLC:CloseChargeGroundWrite";
+
+int closeChargeGroundRelayRead;
+assign closeChargeGroundRelayRead to "ZaPHD:ControlPLC:CloseChargeGroundRossRelayRead";
+monitor closeChargeGroundRelayRead;
+
 int closeAccelChargeRelays;
 assign closeAccelChargeRelays to "ZaPHD:ControlPLC:CloseAccelerationBankWrite";
 
 int closeAccelChargeRelaysRead;
 assign closeAccelChargeRelaysRead to "ZaPHD:ControlPLC:CloseAccelerationRossRelaysRead";
 monitor closeAccelChargeRelaysRead;
+
+int closeAccelSnubRelayRead;
+assign closeAccelSnubRelayRead to "ZaPHD:ControlPLC:CloseAccelerationSnubRossRelayRead";
+monitor closeAccelSnubRelayRead;
+
+int closeCompressSnubRelayRead;
+assign closeCompressSnubRelayRead to "ZaPHD:ControlPLC:CloseCompressionSnubRossRelayRead";
+monitor closeCompressSnubRelayRead;
 
 int closeCompressChargeRelays;
 assign closeCompressChargeRelays to "ZaPHD:ControlPLC:CloseCompressionBankWrite";
@@ -256,8 +271,10 @@ ss ss1 {
        * Commanding charge relays to be closed. If they aren't enabled, the PLC logic will
        * not allow them to close.
        */
+      closeChargeGroundRelay = 1;
       closeAccelChargeRelays = 1;
       closeCompressChargeRelays = 1;
+      pvPut(closeChargeGroundRelay);
       pvPut(closeAccelChargeRelays);
       pvPut(closeCompressChargeRelays);
 
@@ -299,7 +316,8 @@ ss ss1 {
      * The charge relays of all the enabled banks are closed, then proceed to Turning On HV PS
      */
     when ( ((accelBankEnabled == 0) || (closeAccelChargeRelaysRead ==1)) &&
-           ((compressBankEnabled == 0) || (closeCompressChargeRelaysRead == 1)) ) {
+           ((compressBankEnabled == 0) || (closeCompressChargeRelaysRead == 1)) &&
+	   (closeChargeGroundRelayRead ==1) ) {
       epicsThreadSleep(2.0); // Wait 1 seconds for relays to close (only read back outputs)
       printf("\nZaP-HD Control Sequencer Going to Turn On HV PS and Charge from ");
       printf("Closing Charging Relays\n");
@@ -380,12 +398,14 @@ ss ss1 {
        */
       closeCompressChargeRelays = 0;
       pvPut(closeCompressChargeRelays);
+      
       hvPSOff = 0;
       pvPut(hvPSOff);
 
-      epicsThreadSleep(1.0);
       closeAccelChargeRelays = 0;
+      closeChargeGroundRelay = 0;
       pvPut(closeAccelChargeRelays);
+      pvPut(closeChargeGroundRelay);
       epicsThreadSleep(1.0);
  
     } state holdingPS

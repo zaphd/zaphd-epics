@@ -19,7 +19,7 @@ zaphd_registerRecordDeviceDriver pdbbase
 drvAsynIPPortConfigure("ControlPLC","10.10.10.110:502",0,0,1)
 modbusInterposeConfig("ControlPLC", 0, 1000, 0)
 
-drvModbusAsynConfigure("Read_Vmem1", "ControlPLC",0,3,02020,8,2,100,"DirectLOGIC")
+drvModbusAsynConfigure("Read_Vmem1", "ControlPLC",0,3,02020,10,2,100,"DirectLOGIC")
 drvModbusAsynConfigure("Write_Vmem1", "ControlPLC",0,6,1048,8,2,100,"DirectLOGIC")
 drvModbusAsynConfigure("Out_Word", "ControlPLC", 0, 15, 3200, 32, 0, 100, "DirectLOGIC")
 drvModbusAsynConfigure("In_Coil1", "ControlPLC", 0, 1, 2048, 64, 0, 100, "DirectLOGIC")

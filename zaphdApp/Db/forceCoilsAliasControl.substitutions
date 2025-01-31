@@ -22,7 +22,7 @@ file "zaphdApp/Db/DLBOAliasControl.template" { pattern
 {"ZaPHD:ControlPLC:ExposeDHICameraWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3208:Write"}
 {"ZaPHD:ControlPLC:AccelerationBankEnabledWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3209:Write"}
 {"ZaPHD:ControlPLC:CompressionBankEnabledWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3210:Write"}
-{"ZaPHDBlank:ControlPLC:C213",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3211:Write"}
+{"ZaPHD:ControlPLC:CloseChargeGroundWrite",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3211:Write"}
 {"ZaPHDBlank:ControlPLC:C214",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3212:Write"}
 {"ZaPHDBlank:ControlPLC:C215",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3213:Write"}
 {"ZaPHDBlank:ControlPLC:C216",	"Low",	"High",	"Description",	"ZaPHD:ControlPLC:ForceCoil3214:Write"}
