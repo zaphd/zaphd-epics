@@ -35,6 +35,7 @@ WORKDIR /usr/local/epics/support/asyn
 RUN sed -i -e 's/EPICS_BASE=.*/EPICS_BASE=\/usr\/local\/epics/g' configure/RELEASE
 RUN sed -i -e 's/SUPPORT=.*/SUPPORT=\/usr\/local\/epics\/support/g' configure/RELEASE
 RUN sed -i -e 's/# TIRPC=YES/TIRPC=YES/g' configure/CONFIG_SITE
+RUN sed -i -e 's/#DRV_VXI11=YES/DRV_VXI11=YES/g' configure/CONFIG_SITE
 RUN make
 WORKDIR /usr/local/epics/support
 RUN git clone https://github.com/paulscherrerinstitute/StreamDevice.git stream
